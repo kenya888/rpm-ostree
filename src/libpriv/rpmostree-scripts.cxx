@@ -197,6 +197,13 @@ static const RpmOstreeLuaReplacement lua_replacements[] = {
     "/usr/bin/bash",
     "touch /var/lib/rpm-state/authselect.force"
   },
+  /* lua override for hunspell-filesystem post
+   * https://src.fedoraproject.org/rpms/hunspell/blob/80770886a515d9dd9c704ab992e6f440f793e1af/f/hunspell.spec#_116
+   */
+  { "hunspell-filesystem.post",
+    "/usr/bin/bash",
+    "ln -sf " DATADIR "/hunspell " DATADIR "/myspell"
+  },
   /* Just for the tests */
   { "rpmostree-lua-override-test.post",
     "/usr/bin/sh",
